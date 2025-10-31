@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.contract;
 
 import com.pluralsight.dealership.Vehicle;
 
@@ -15,6 +15,15 @@ public abstract class Contract {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.vehicleSold = vehicleSold;
+    }
+
+    public Contract(String date, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double monthlyPayment) {
+        this.date = date;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.vehicleSold = vehicleSold;
+        this.totalPrice = totalPrice;
+        this.monthlyPayment = monthlyPayment;
     }
 
     public abstract double getMonthlyPayment();

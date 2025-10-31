@@ -1,10 +1,10 @@
-package com.pluralsight;
+package com.pluralsight.contract;
 
 import com.pluralsight.dealership.Vehicle;
 
 public class SalesContract extends Contract {
     private double salesTaxAmount;
-    private final double recordingFee = 100;
+    private double recordingFee;
     private double processingFee;
     private boolean isFinanced;
 
@@ -15,6 +15,15 @@ public class SalesContract extends Contract {
         this.isFinanced = isFinanced;
         super.setMonthlyPayment(getMonthlyPayment());
         super.setTotalPrice(getTotalPrice());
+        this.recordingFee = 100;
+    }
+
+    public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, double totalPrice, double salesTaxAmount, double recordingFee, double processingFee, boolean isFinanced, double monthlyPayment) {
+        super(date, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
+        this.salesTaxAmount = salesTaxAmount;
+        this.recordingFee = recordingFee;
+        this.processingFee = processingFee;
+        this.isFinanced = isFinanced;
     }
 
     @Override
@@ -43,14 +52,44 @@ public class SalesContract extends Contract {
             return 0.0;
         }
     }
-    public double getSalesTaxAmount(){
-        return getVehicleSold().getPrice()*0.05;
+
+    public double getSalesTaxAmount() {
+        return salesTaxAmount;
     }
-    public double getProcessingFee(){
-        double vehiclePrice = getVehicleSold().getPrice();
-        if(vehiclePrice>=10000){
-            return 495;
+
+    public void setSalesTaxAmount(double salesTaxAmount) {
+        this.salesTaxAmount = salesTaxAmount;
+    }
+
+    public double getRecordingFee() {
+        return recordingFee;
+    }
+
+    public void setRecordingFee(double recordingFee) {
+        this.recordingFee = recordingFee;
+    }
+
+    public double getProcessingFee() {
+        return processingFee;
+    }
+
+    public void setProcessingFee(double processingFee) {
+        this.processingFee = processingFee;
+    }
+
+    public boolean isFinanced() {
+        return isFinanced;
+    }
+
+    public void setFinanced(boolean financed) {
+        isFinanced = financed;
+    }
+    public String getFinanceOption(){
+        if (isFinanced){
+            return "YES";
         }
-        else return 295;
+        else {
+            return "NO";
+        }
     }
 }
