@@ -68,7 +68,7 @@ public class UserInterface {
                     processRemoveVehicleRequest();
                     break;
                 case "10":
-
+                    processGoToLeaseSellContractMenu();
                     break;
                 case "99":
                     quit = true;
@@ -114,6 +114,7 @@ public class UserInterface {
                     break;
             }
         }
+        contractFileManager.saveContracts(contracts);
     }
     public ArrayList<Contract> processDeletionContract(ArrayList<Contract> contracts){
         System.out.println("What is the vin of vehicle of contract?");
