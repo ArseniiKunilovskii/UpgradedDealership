@@ -26,6 +26,10 @@ public abstract class Contract {
         this.monthlyPayment = monthlyPayment;
     }
 
+    public Contract() {
+
+    }
+
     public abstract double getMonthlyPayment();
 
     public abstract double getTotalPrice();
@@ -68,5 +72,15 @@ public abstract class Contract {
 
     public void setMonthlyPayment(double monthlyPayment) {
         this.monthlyPayment = monthlyPayment;
+    }
+
+    @Override
+    public String toString() {
+        return "--- Contract Details ---\n" +
+                "  Date: " + date + "\n" +
+                "  Customer: " + customerName + " (" + customerEmail + ")\n" +
+                "  Vehicle: " + vehicleSold + "\n" +
+                "  Price: $" + totalPrice + " (Monthly: $" + monthlyPayment + ")\n" +
+                "--------------------------";
     }
 }

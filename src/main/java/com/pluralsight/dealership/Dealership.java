@@ -60,6 +60,14 @@ public class Dealership {
         return matchingVehicles;
     }
 
+    public Vehicle getVehicleByVin(int vin){
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getVin() == vin){
+                return vehicle;
+            }
+        }
+        return null;
+    }
     public List<Vehicle> getVehiclesByYear(int min, int max) {
         List<Vehicle> matchingVehicles = new ArrayList<>();
         for (Vehicle vehicle : inventory) {

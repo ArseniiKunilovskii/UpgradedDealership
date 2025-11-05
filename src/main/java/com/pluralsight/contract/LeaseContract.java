@@ -18,6 +18,10 @@ public class LeaseContract extends Contract {
         this.leaseFee = leaseFee;
     }
 
+    public LeaseContract() {
+        super();
+    }
+
     @Override
     public double getTotalPrice() {
         return (getVehicleSold().getPrice() - expectedEndingValue) + leaseFee;
